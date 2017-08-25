@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Photo Story</string>
+    <string name="action_create">Create</string>
+    <string name="view_all">All Stories</string>
+    <string name="story_details">The Story</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_send">Send</string>
+    <string name="button_view">View Story</string>
+</resources>
