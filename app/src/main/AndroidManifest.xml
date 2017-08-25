@@ -22,7 +22,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".StoryDetailsActivity"
-            android:parentActivityName=".ViewAllActivity"/>
+            android:parentActivityName=".ViewAllActivity" />
     </application>
 
 </manifest>

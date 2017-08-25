@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context="com.hfad.photostory.MainActivity">
 
+    <ListView
+        android:id="@+id/favorite_list"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
     <Button
         android:id="@+id/view_all"
         android:layout_height="wrap_content"
