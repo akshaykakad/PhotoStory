@@ -23,6 +23,7 @@
         <activity
             android:name=".StoryDetailsActivity"
             android:parentActivityName=".ViewAllActivity" />
+        <activity android:name=".AddPhotosActivity"></activity>
     </application>
 
 </manifest>
