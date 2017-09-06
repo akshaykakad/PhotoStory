@@ -8,7 +8,7 @@ import android.content.ContentValues;
 public class PhotoStoryDatabaseHelper extends SQLiteOpenHelper{
 
     private static final String DB_NAME = "photoStory";
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
 
     PhotoStoryDatabaseHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
@@ -27,7 +27,13 @@ public class PhotoStoryDatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        db.execSQL("ALTER TABLE STORY_DETAILS ADD COLUMN FAVORITE NUMERIC;");
+        if(oldVersion == 1) {
+            db.execSQL("ALTER TABLE STORY_DETAILS ADD COLUMN FAVORITE NUMERIC;");
+            db.execSQL("ALTER TABLE STORY_DETAILS ADD COLUMN SYNOPSIS TEXT;");
+        }
+        else if(oldVersion == 2){
+            db.execSQL("ALTER TABLE STORY_DETAILS ADD COLUMN SYNOPSIS TEXT;");
+        }
     }
 
     private static void insertRecords(SQLiteDatabase db, String name){

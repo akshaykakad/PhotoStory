@@ -18,4 +18,5 @@
     <string name="up">Up</string>
     <string name="down">Down</string>
     <string name="delete">Delete</string>
+    <string name="create_screen">Create Story</string>
 </resources>

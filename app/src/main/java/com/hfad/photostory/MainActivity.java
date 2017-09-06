@@ -100,6 +100,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    //no use
     private class GetFavoriteStoriesTask extends AsyncTask<Integer, Void, Boolean>{
         protected void onPreExecute(){
             listView = (ListView)findViewById(R.id.favorite_list);
