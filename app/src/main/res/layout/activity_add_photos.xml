@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:text="@string/add"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:onClick="onAddClick"/>
 
     <Button
         android:id="@+id/done"

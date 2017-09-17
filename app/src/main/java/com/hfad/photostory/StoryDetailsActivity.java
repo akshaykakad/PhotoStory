@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -47,6 +48,7 @@ public class StoryDetailsActivity extends Activity {
         switch(item.getItemId()){
             case R.id.action_create:
                 Intent intent = new Intent(this, CreateEditActivity.class);
+                intent.putExtra(CreateEditActivity.STORY_EDIT, 0);
                 startActivity(intent);
                 return true;
             default:
@@ -121,5 +123,48 @@ public class StoryDetailsActivity extends Activity {
                 toast.show();
             }
         }
+    }
+
+    public void onDeleteClick(View view){
+        new DeleteRecord().execute();
+    }
+
+    private class DeleteRecord extends AsyncTask<Integer, Void, Boolean>{
+        @Override
+        protected void onPreExecute(){
+
+        }
+        @Override
+        protected Boolean doInBackground(Integer... story){
+            try{
+                photoStoryDatabaseHelper = new PhotoStoryDatabaseHelper(StoryDetailsActivity.this);
+                db = photoStoryDatabaseHelper.getWritableDatabase();
+                db.delete("STORY_DETAILS","_id = ?", new String[]{Integer.toString(storyId)});
+                return true;
+            }catch(SQLException ex){
+                return false;
+            }
+        }
+        @Override
+        protected void onPostExecute(Boolean success){
+            Toast toast;
+            if(!success){
+                toast = Toast.makeText(StoryDetailsActivity.this, "Database not available", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            else{
+                toast = Toast.makeText(StoryDetailsActivity.this, "Record Deleted", Toast.LENGTH_SHORT);
+                toast.show();
+                Intent intent = new Intent(StoryDetailsActivity.this, ViewAllActivity.class);
+                startActivity(intent);
+            }
+        }
+    }
+
+    public void onEditClick(View view){
+        Intent intent = new Intent(StoryDetailsActivity.this, CreateEditActivity.class);
+        intent.putExtra(CreateEditActivity.STORY_ID, storyId);
+        intent.putExtra(CreateEditActivity.STORY_EDIT, 1);
+        startActivity(intent);
     }
 }

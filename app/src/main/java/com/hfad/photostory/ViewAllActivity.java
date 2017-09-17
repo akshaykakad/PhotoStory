@@ -58,6 +58,7 @@ public class ViewAllActivity extends Activity {
         switch(item.getItemId()){
             case R.id.action_create:
                 Intent intent = new Intent(this, CreateEditActivity.class);
+                intent.putExtra(CreateEditActivity.STORY_EDIT, 0);
                 startActivity(intent);
                 return true;
             default:
